@@ -206,7 +206,7 @@ public class ListFragment extends Fragment {
 //
 //                    Self resturant = new Self(1, restaurantSpinner.getSelectedItem() + "");
 
-                    MealInfo selectedMealInfo =  MealInfo.allAvailableMealInfo.get( Integer.valueOf(coupon[2]));
+                    final MealInfo selectedMealInfo =  MealInfo.allAvailableMealInfo.get( Integer.valueOf(coupon[2]));
                     selectedMealInfo.setReservedFoodId(slctfood);
                     selectedMealInfo.setSelfData(restaurantSpinner.getSelectedItem()+"",restaurantSpinner.getSelectedItemPosition()-1);
                     selectedMealInfo.setMealType(MealType.NORMAL);
@@ -237,6 +237,19 @@ public class ListFragment extends Fragment {
                         else Toast.makeText(getContext(),"رستوران یا  غذا را تغییر دهید!",Toast.LENGTH_LONG).show();
 
                     } else {
+                        Thread thread = new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    MyKit.addCoupon(MyKit.student,selectedMealInfo.getReservedSelf().getSelfId()+"",selectedMealInfo.getCouponId(),MyKit.student.getUser_token(),selectedMealInfo.state);
+
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+
+                            }
+                        });
+                        thread.start();
                         datalist.add(0, selectedMealInfo);
                         mAdapter.notifyDataSetChanged();
                         MyKit.student.allStudentFoodInfo.add(selectedMealInfo);
@@ -286,8 +299,7 @@ public class ListFragment extends Fragment {
 
             //following piece of scripts are for testing radio buttons
 
-//            firstFood.setText("کوفت");
-//            secondFood.setText("زهرمار");
+
 
         }
         else {

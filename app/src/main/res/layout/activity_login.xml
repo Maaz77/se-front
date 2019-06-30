@@ -38,6 +38,7 @@
             android:textColor="@color/colorPrimaryText"
             android:textColorHint="@color/colorPrimaryTextDarker"
             android:textSize="20dp"
+            android:text="9532290"
 
 
             />
@@ -66,7 +67,8 @@
             android:textColorHint="@color/colorPrimaryTextDarker"
             android:textSize="20dp"
             android:inputType="textPassword"
-            android:gravity="right" />
+            android:gravity="right"
+            android:text="123123"/>
     </android.support.v7.widget.CardView>
 
 

@@ -447,6 +447,8 @@ public class MyKit {
 
     }
     public static String addCouponURL = "http://nowaw.pythonanywhere.com/login/purchase";
+
+
     public static void addCoupon ( Student student , String self , String food_id , String token , Boolean state )throws Exception{
         System.out.println("Adding Coupon \n");
         String booleanState = (state == true) ? "1" : "0" ;
